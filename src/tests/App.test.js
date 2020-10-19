@@ -20,4 +20,4 @@ it('Renderizando os links', () => {
   expect(links[0].text).toBe('Home');
   expect(links[1].text).toBe('About');
   expect(links[2].text).toBe('Favorite Pokémons');
-})
+});
