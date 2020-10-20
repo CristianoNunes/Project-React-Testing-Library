@@ -1,7 +1,7 @@
 import React from 'react';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
-import { fireEvent, getByText } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 
 describe('Testes da Pokedex:', () => {
   it('Teste se a página contém um heading h2 com o texto Encountered pokémons', () => {
@@ -11,8 +11,8 @@ describe('Testes da Pokedex:', () => {
     const h2 = getAllByRole('heading', { level: 2 });
     expect(h2[1]).toHaveTextContent('Encountered pokémons');
   });
-  
-  it('Teste se é exibido o próximo Pokémon da lista quando o botão Próximo pokémon é clicado', () => {
+
+  it('Teste se é exibido o próximo Pkm da lista quando o btn Próximo pkm é clicado', () => {
     const { history, getByRole } = renderWithRouter(<App />);
     history.push('/');
     const btn = getByRole('button', { name: 'Próximo pokémon' });
