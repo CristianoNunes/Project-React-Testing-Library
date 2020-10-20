@@ -1,7 +1,7 @@
 import React from 'react';
+import { fireEvent } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
-import { fireEvent } from '@testing-library/react';
 
 describe('Testes da Pokedex:', () => {
   it('Teste se a página contém um heading h2 com o texto Encountered pokémons', () => {
@@ -12,7 +12,7 @@ describe('Testes da Pokedex:', () => {
     expect(h2[1]).toHaveTextContent('Encountered pokémons');
   });
 
-  it('Teste se é exibido o próximo Pkm da lista quando o btn Próximo pkm é clicado', () => {
+  it('Teste se é exibido o próximo Pkm da lista qnd o btn Próximo pkm é clikdo', () => {
     const { history, getByRole } = renderWithRouter(<App />);
     history.push('/');
     const btn = getByRole('button', { name: 'Próximo pokémon' });
@@ -50,5 +50,4 @@ describe('Testes da Pokedex:', () => {
     const typePokemon = getByTestId('pokemonType');
     expect(typePokemon).toBeInTheDocument();
   });
-
 });
