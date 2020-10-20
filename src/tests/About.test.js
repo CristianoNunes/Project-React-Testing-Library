@@ -1,5 +1,5 @@
 import React from 'react';
-import { getByAltText, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
@@ -8,7 +8,7 @@ describe('Testes do About:', () => {
     const { history, getByText } = renderWithRouter(<App />);
     history.push('/about');
     expect(history.location.pathname).toBe('/about');
-    const information = getByText(/This application simulates a Pokédex/)
+    const information = getByText(/This application simulates a Pokédex/);
     expect(information).toBeInTheDocument();
   });
 
