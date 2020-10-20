@@ -3,7 +3,7 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('Testes do NotFound:', () => {
-  it('Teste se página contém um heading h2 com o texto Page requested not found 😭', () => {
+  it('Teste se página contém um heading h2 com o texto Page requested not found', () => {
     const { history, getAllByRole } = renderWithRouter(<App />);
     history.push('/xxx');
     expect(history.location.pathname).toBe('/xxx');
