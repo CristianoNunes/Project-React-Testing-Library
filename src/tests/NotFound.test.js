@@ -12,10 +12,10 @@ describe('Testes do NotFound:', () => {
   });
 
   it('Teste se página mostra a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif', async () => {
-    const { getByRole, history } = renderWithRouter(<App />);
-    history.push('/about');
-    const img = getByRole('img');
+    const { getAllByRole, history } = renderWithRouter(<App />);
+    history.push('/xxx');
+    const img = getAllByRole('img');
     const srcImg = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';
-    expect(img.src).toBe(srcImg);
+    expect(img[1].src).toBe(srcImg);
   });
 });
