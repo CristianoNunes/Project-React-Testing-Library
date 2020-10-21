@@ -10,7 +10,7 @@ describe('Requisito 1 - Testando o arquivo App.ja', () => {
     expect(heading).toBeInTheDocument();
   });
 
-  it('A page principal da Pokédex é renderizada ao carregar o app no caminho de URL /', () => {
+  it('A page principal da Pkdex é render ao carregar o app no caminho de URL /', () => {
     const { getByText, history } = renderWithRouter(<App />);
     history.push('/');
     expect(getByText('Encountered pokémons')).toBeInTheDocument();
@@ -34,21 +34,21 @@ describe('Requisito 1 - Testando o arquivo App.ja', () => {
     expect(links[2].text).toBe('Favorite Pokémons');
   });
 
-  it('O app é vai p/ a pag inicial, na URL / ao clicar no link Home da barra de navegação.', () => {
+  it('O app vai p/ a pag inicial, na URL / ao clicar no link Home', () => {
     const { history, getAllByRole } = renderWithRouter(<App />);
     const links = getAllByRole('link');
     fireEvent.click(links[0]);
     expect(history.location.pathname).toBe('/');
   });
 
-  it('O app é vai p/ a pag About, na URL /about, ao clicar no link About da barra de navegação', () => {
+  it('O app vai p/ a pag About, na URL /about, ao clicar no link About', () => {
     const { history, getAllByRole } = renderWithRouter(<App />);
     const links = getAllByRole('link');
     fireEvent.click(links[1]);
     expect(history.location.pathname).toBe('/about');
   });
 
-  it('O app vai p/ a pag de Pks Favs, na URL /favorites, ao clicar no link da barra de navegação', () => {
+  it('O app vai p/ a pag de Pks Favs, na URL /favorites, ao clicar no link', () => {
     const { history, getAllByRole } = renderWithRouter(<App />);
     const links = getAllByRole('link');
     fireEvent.click(links[2]);
