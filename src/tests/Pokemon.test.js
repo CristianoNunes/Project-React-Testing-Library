@@ -7,7 +7,6 @@ describe('Testes de Pokemon:', () => {
     const { getByTestId } = renderWithRouter(<App />);
     const pName = getByTestId('pokemon-name');
     expect(pName).toHaveTextContent('Pikachu');
-
   });
 
   it('O Tipo correto do Pokémon deve ser mostrado na tela', () => {
