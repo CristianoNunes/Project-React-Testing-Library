@@ -1,25 +1,24 @@
 import React from 'react';
-import { fireEvent, getByTestId, getByText } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('Testes de Pokemon:', () => {
   it('O nome correto do Pokémon deve ser mostrado na tela', () => {
     const { getByTestId } = renderWithRouter(<App />);
-    const pName = getByTestId("pokemon-name");
+    const pName = getByTestId('pokemon-name');
     expect(pName).toHaveTextContent('Pikachu');
 
   });
 
   it('O Tipo correto do Pokémon deve ser mostrado na tela', () => {
     const { getByTestId } = renderWithRouter(<App />);
-    const pType = getByTestId("pokemonType");
+    const pType = getByTestId('pokemonType');
     expect(pType).toHaveTextContent('Electric');
   });
 
   it('O Peso correto do Pokémon deve ser mostrado na tela', () => {
     const { getByTestId } = renderWithRouter(<App />);
-    const pWeight = getByTestId("pokemon-weight");
+    const pWeight = getByTestId('pokemon-weight');
     expect(pWeight).toHaveTextContent('Average weight: 6.0 kg');
   });
 
