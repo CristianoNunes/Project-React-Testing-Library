@@ -3,7 +3,7 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
 describe('Testes do About:', () => {
-  it('Teste se a página contém as informações sobre a Pokédex.', () => {
+  it('A página contém as informações sobre a Pokédex.', () => {
     const { history, getByText } = renderWithRouter(<App />);
     history.push('/about');
     expect(history.location.pathname).toBe('/about');
@@ -11,7 +11,7 @@ describe('Testes do About:', () => {
     expect(information).toBeInTheDocument();
   });
 
-  it('Teste se a página contém um heading h2 com o texto About Pokédex', () => {
+  it('A página contém um heading h2 com o texto About Pokédex', () => {
     const { history, getAllByRole } = renderWithRouter(<App />);
     history.push('/about');
     expect(history.location.pathname).toBe('/about');
@@ -19,7 +19,14 @@ describe('Testes do About:', () => {
     expect(h2[1]).toHaveTextContent('About Pokédex');
   });
 
-  it('Teste se a página contém a seguinte imagem de uma Pokédex', async () => {
+  it('A página contém dois parágrafos com texto sobre a Pokédex', () => {
+    const { history, container } = renderWithRouter(<App />);
+    history.push('/about');
+    const p = container.querySelectorAll('p');
+    expect(p.length).toBe(2);
+  });
+
+  it('A página contém a seguinte imagem de uma Pokédex', () => {
     const { getByRole, history } = renderWithRouter(<App />);
     history.push('/about');
     const img = getByRole('img');

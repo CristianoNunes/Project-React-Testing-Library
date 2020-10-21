@@ -42,7 +42,7 @@ describe('Testes da Pokedex:', () => {
     expect(pkmName).toBeInTheDocument();
   });
 
-  it('Teste se ao clical no btn Fire o primeiro pokemon é do tipo Fire', () => {
+  it('Teste se ao clicar no btn Fire o primeiro pokemon é do tipo Fire', () => {
     const { history, getByRole, getByTestId } = renderWithRouter(<App />);
     history.push('/');
     const btnFire = getByRole('button', { name: 'Fire' });
