@@ -12,7 +12,7 @@ describe('Testes do About:', () => {
 
   it('Teste se é exibido todos os cards de pokémons favoritados', () => {
     const { getByText, queryByText } = renderWithRouter(
-      <FavoritePokemons pokemons={ [pokemons[2]] } />
+      <FavoritePokemons pokemons={ [pokemons[2]] } />,
     );
     const poke3 = getByText('Caterpie');
     const poke4 = queryByText('Ekans');
@@ -22,10 +22,9 @@ describe('Testes do About:', () => {
 
   it('Teste se Não é exibido nenhum card de pokémon não favoritado', () => {
     const { queryByText } = renderWithRouter(
-      <FavoritePokemons pokemons={ [] } />
+      <FavoritePokemons pokemons={ [] } />,
     );
     const poke4 = queryByText('Ekans');
     expect(poke4).not.toBeInTheDocument();
   });
-
 });
