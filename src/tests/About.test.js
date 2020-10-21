@@ -23,7 +23,8 @@ describe('Testes do About:', () => {
     const { history, container } = renderWithRouter(<App />);
     history.push('/about');
     const p = container.querySelectorAll('p');
-    expect(p.length).toBe(2);
+    const qtd = 2;
+    expect(p.length).toBe(qtd);
   });
 
   it('A página contém a seguinte imagem de uma Pokédex', () => {
