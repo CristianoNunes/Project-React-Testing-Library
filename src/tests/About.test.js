@@ -4,17 +4,15 @@ import About from '../components/About';
 
 describe('Testes do About:', () => {
   it('A página contém as informações sobre a Pokédex.', () => {
-    const { history, getByText } = renderWithRouter(<About />);
-    expect(history.location.pathname).toBe('/about');
+    const { getByText } = renderWithRouter(<About />);
     const information = getByText(/This application simulates a Pokédex/);
     expect(information).toBeInTheDocument();
   });
 
   it('A página contém um heading h2 com o texto About Pokédex', () => {
-    const { history, getAllByRole } = renderWithRouter(<About />);
-    expect(history.location.pathname).toBe('/about');
-    const h2 = getAllByRole('heading', { level: 2 });
-    expect(h2[1]).toHaveTextContent('About Pokédex');
+    const { getByRole } = renderWithRouter(<About />);
+    const h2 = getByRole('heading', { name: 'About Pokédex' });
+    expect(h2).toBeInTheDocument();
   });
 
   it('A página contém dois parágrafos com texto sobre a Pokédex', () => {
