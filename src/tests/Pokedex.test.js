@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, getAllByText } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import Pokedex from '../components/Pokedex';
 import pokemons from '../data';
@@ -73,7 +73,7 @@ describe('Testando o arquivo Pokedex.js', () => {
   });
 
   it('5- É criado, dinamicamente, um botão de filtro para cada tipo de Pokémon', () => {
-    const { getByRole } = renderWithRouter(
+    const { getByRole, getAllByTestId} = renderWithRouter(
       <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
         isPokemonFavoriteById={ { 25: false, 4: false, 10: false } }
@@ -85,10 +85,14 @@ describe('Testando o arquivo Pokedex.js', () => {
     expect(btnElectric).toBeInTheDocument();
     expect(btnFire).toBeInTheDocument();
     expect(btnBug).toBeInTheDocument();
+
+    const todosBtns = getAllByTestId('pokemon-type-button');
+    const qtdBtns = 3;
+    expect(todosBtns.length).toBe(3);
   });
 
   it('6- Btn Prox pkm deve ser desabilitado quando houver só 1 pkm na lista', () => {
-    const { getByRole } = renderWithRouter(
+    const { getByRole, getByText } = renderWithRouter(
       <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
         isPokemonFavoriteById={ { 25: false, 4: false, 10: false } }
@@ -101,5 +105,6 @@ describe('Testando o arquivo Pokedex.js', () => {
     fireEvent.click(btnElectric);
 
     expect(btnProx).toHaveAttribute('disabled');
+    expect(getByText('Encountered pokémons')).toBeInTheDocument();
   });
 });

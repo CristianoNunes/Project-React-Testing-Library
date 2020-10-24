@@ -18,7 +18,7 @@ describe('Testes de Pokemon:', () => {
   it('O Peso correto do Pokémon deve ser mostrado na tela', () => {
     const { getByTestId } = renderWithRouter(<App />);
     const pWeight = getByTestId('pokemon-weight');
-    expect(pWeight).toHaveTextContent('Average weight: 6.0 kg');
+    expect(pWeight).toHaveTextContent('Average weight:6.0kg');
   });
 
   it('O Link correto do Pokémon de acordo com id', () => {
