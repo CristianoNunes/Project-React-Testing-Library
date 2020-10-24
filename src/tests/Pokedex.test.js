@@ -87,7 +87,7 @@ describe('Testando o arquivo Pokedex.js', () => {
     expect(btnBug).toBeInTheDocument();
   });
 
-  it('6- Btn Prox pkm deve ser desabilitado quando houver só 1 pokémon na lista', () => {
+  it('6- Btn Prox pkm deve ser desabilitado quando houver só 1 pkm na lista', () => {
     const { getByRole } = renderWithRouter(
       <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
