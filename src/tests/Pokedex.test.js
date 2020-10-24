@@ -44,7 +44,7 @@ describe('Testando o arquivo Pokedex.js', () => {
         isPokemonFavoriteById={ { 25: false, 4: false, 10: false } }
       />,
     );
-    const btnElectric = getByRole('button',  {name: 'Electric' });
+    const btnElectric = getByRole('button', { name: 'Electric' });
     const btnFire = getByRole('button', { name: 'Fire' });
     expect(btnElectric).toBeInTheDocument();
     expect(btnFire).toBeInTheDocument();
@@ -72,7 +72,7 @@ describe('Testando o arquivo Pokedex.js', () => {
     expect(queryByText(/Pikachu/i)).toBeInTheDocument();
   });
 
-  it('5- Teste se é criado, dinamicamente, um botão de filtro para cada tipo de Pokémon', () => {
+  it('5- É criado, dinamicamente, um botão de filtro para cada tipo de Pokémon', () => {
     const { getByRole } = renderWithRouter(
       <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
@@ -87,17 +87,17 @@ describe('Testando o arquivo Pokedex.js', () => {
     expect(btnBug).toBeInTheDocument();
   });
 
-  it('6- Btn Prox pkm deve ser desabilitado qdo a lista filtrada de Pkmns tiver 1 só pkm.', () => {
+  it('6- Btn Prox pkm deve ser desabilitado quando houver só 1 pokémon na lista', () => {
     const { getByRole } = renderWithRouter(
       <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
-        isPokemonFavoriteById={ { 25: false, 4: false, 10:false } }
+        isPokemonFavoriteById={ { 25: false, 4: false, 10: false } }
       />,
     );
-    const btnProx  = getByRole('button', { name: 'Próximo pokémon' });
+    const btnProx = getByRole('button', { name: 'Próximo pokémon' });
     expect(btnProx).not.toHaveAttribute('disabled');
 
-    const btnElectric = getByRole('button', { name: 'Electric'});
+    const btnElectric = getByRole('button', { name: 'Electric' });
     fireEvent.click(btnElectric);
 
     expect(btnProx).toHaveAttribute('disabled');
