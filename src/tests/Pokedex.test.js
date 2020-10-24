@@ -1,17 +1,16 @@
 import React from 'react';
-import { fireEvent, getAllByTestId, queryByText } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import renderWithRouter from '../renderWithRouter';
 import Pokedex from '../components/Pokedex';
-import App from '../App';
 import pokemons from '../data';
 
 describe('Testando o arquivo Pokedex.js', () => {
   it('1- Exibe o próximo Pkm da lista qnd o btn Próximo pkm é clikdo', () => {
     const { getByRole, queryByText } = renderWithRouter(
-      <Pokedex 
+      <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
-        isPokemonFavoriteById={ { 25: false, 4: false, 10:false } }
-      />
+        isPokemonFavoriteById={ { 25: false, 4: false, 10: false } }
+      />,
     );
     // Item 1.1 - O botão deve conter o texto Próximo pokémon
     const proxBtn = getByRole('button', { name: 'Próximo pokémon' });
@@ -28,10 +27,10 @@ describe('Testando o arquivo Pokedex.js', () => {
 
   it('2- Teste se é mostrado apenas um Pokémon por vez', () => {
     const { getAllByTestId } = renderWithRouter(
-      <Pokedex 
+      <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
-        isPokemonFavoriteById={ { 25: false, 4: false, 10:false } }
-      />
+        isPokemonFavoriteById={ { 25: false, 4: false, 10: false } }
+      />,
     );
     const todosPokms = getAllByTestId('pokemon-name');
     const qtdPkm = 1;
@@ -40,13 +39,13 @@ describe('Testando o arquivo Pokedex.js', () => {
 
   it('3- Teste se a Pokédex tem os botões de filtro', () => {
     const { getByRole, getByTestId } = renderWithRouter(
-      <Pokedex 
+      <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
-        isPokemonFavoriteById={ { 25: false, 4: false, 10:false } }
-      />
+        isPokemonFavoriteById={ { 25: false, 4: false, 10: false } }
+      />,
     );
-    const btnElectric = getByRole('button', {name: 'Electric'});
-    const btnFire = getByRole('button', {name: 'Fire'});
+    const btnElectric = getByRole('button',  {name: 'Electric' });
+    const btnFire = getByRole('button', { name: 'Fire' });
     expect(btnElectric).toBeInTheDocument();
     expect(btnFire).toBeInTheDocument();
 
@@ -61,12 +60,12 @@ describe('Testando o arquivo Pokedex.js', () => {
 
   it('4- Teste se a Pokédex contém um botão para resetar o filtro', () => {
     const { getByRole, queryByText } = renderWithRouter(
-      <Pokedex 
+      <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
-        isPokemonFavoriteById={ { 25: false, 4: false, 10:false } }
-      />
+        isPokemonFavoriteById={ { 25: false, 4: false, 10: false } }
+      />,
     );
-    const btnAll = getByRole('button', {name: 'All'});
+    const btnAll = getByRole('button', { name: 'All' });
     expect(btnAll).toBeInTheDocument();
 
     fireEvent.click(btnAll);
@@ -75,14 +74,14 @@ describe('Testando o arquivo Pokedex.js', () => {
 
   it('5- Teste se é criado, dinamicamente, um botão de filtro para cada tipo de Pokémon', () => {
     const { getByRole } = renderWithRouter(
-      <Pokedex 
+      <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
-        isPokemonFavoriteById={ { 25: false, 4: false, 10:false } }
-      />
+        isPokemonFavoriteById={ { 25: false, 4: false, 10: false } }
+      />,
     );
-    const btnElectric = getByRole('button', {name: 'Electric'});
-    const btnFire = getByRole('button', {name: 'Fire'});
-    const btnBug = getByRole('button', {name: 'Bug'});
+    const btnElectric = getByRole('button', { name: 'Electric' });
+    const btnFire = getByRole('button', { name: 'Fire' });
+    const btnBug = getByRole('button', { name: 'Bug' });
     expect(btnElectric).toBeInTheDocument();
     expect(btnFire).toBeInTheDocument();
     expect(btnBug).toBeInTheDocument();
@@ -90,12 +89,12 @@ describe('Testando o arquivo Pokedex.js', () => {
 
   it('6- Btn Prox pkm deve ser desabilitado qdo a lista filtrada de Pkmns tiver 1 só pkm.', () => {
     const { getByRole } = renderWithRouter(
-      <Pokedex 
+      <Pokedex
         pokemons={ [pokemons[0], pokemons[1], pokemons[2]] }
         isPokemonFavoriteById={ { 25: false, 4: false, 10:false } }
-      />
+      />,
     );
-    const btnProx  = getByRole('button', { name: 'Próximo pokémon'});
+    const btnProx  = getByRole('button', { name: 'Próximo pokémon' });
     expect(btnProx).not.toHaveAttribute('disabled');
 
     const btnElectric = getByRole('button', { name: 'Electric'});
